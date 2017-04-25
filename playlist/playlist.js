@@ -1,13 +1,26 @@
+
+
 function handleButtonClick() {
-  //alert("Button was clicked!");
+  //alert("button was clicked");
   var textInput = document.getElementById("songTextInput");
-  if (textInput.value == "") {
-    alert("歌曲名不能为空！")
-  } else {
-    var songName = textInput.value;
-    alert("Adding " + songName);
+  var songName = textInput.value;
+
+  if(songName == "") {
+    alert("please enter a song.");
+  }
+  else {
+    var li = document.createElement("li");
+    li.innerHTML = songName;
+    var ul = document.getElementById("playlist");
+    ul.appendChild(li);
+    save(songName);
   }
 }
+window.onload = init;
 
-  var button = document.getElementById("addButton");
-  button.onclick = handleButtonClick;
+function init() {
+	var button = document.getElementById("addButton");
+	button.onclick = handleButtonClick;
+
+	loadPlaylist();
+}
