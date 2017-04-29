@@ -78,3 +78,9 @@ nextShowing = movie2.getNextShowing();
 alert(nextShowing);
 alert(movie3.getNextShowing());
 alert(movie4.getNextShowing());
+
+//practice json
+var jsonString = JSON.stringify(movie1);
+alert(jsonString);
+var jsonMovieObject = JSON.parse(jsonString);
+alert("JSON movie is " + jsonMovieObject.title);
