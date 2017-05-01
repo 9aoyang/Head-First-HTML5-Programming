@@ -91,3 +91,20 @@ function degreesToRadians(degrees) {
     return (degrees * Math.PI) / 180;
 }
 
+function updateTweets(tweets) {
+    alert(1);
+    var tweetsSelection = document.getElementById("tweets");
+    
+    for(var  i = 0; i < tweets.length; i++) {
+        var tweet = tweets[i];
+        var option = document.createElement("option");
+        option.text = tweet.text;
+        option.value = tweet.text.replace("\"", "'");
+
+        tweetsSelection.options.add(option);
+
+    }
+
+    tweetsSelection.selectedIndex = 0;
+    
+}
