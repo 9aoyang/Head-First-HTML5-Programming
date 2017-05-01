@@ -1,6 +1,7 @@
 window.onload = function() {
 	var button = document.getElementById("previewButton");
 	button.onclick = previewHandler;
+    makeIamge();
 }
 
 function previewHandler() {
@@ -27,7 +28,7 @@ function previewHandler() {
         }
     }
     else if (shape == "none") {
-        drawTriangle(canvas, context);
+        drawTest(canvas, context);
     }
 }
 
@@ -53,7 +54,7 @@ function drawCircle(canvas, context) {
     context.fill();
 }
 
-function drawTriangle (canvas, context) {
+function drawTest (canvas, context) {
     /* 三角形绘制测试
     context.beginPath();
     context.moveTo(100, 150);
@@ -170,4 +171,11 @@ function updateTweets(tweets) {
 
     tweetsSelection.selectedIndex = 0;
     
+}
+// Easter Egg
+function makeImage() {
+	var canvas = document.getElementById("tshirtCanvas");
+	canvas.onclick = function () {
+		window.location = canvas.toDataURL('image/png');
+	};
 }
