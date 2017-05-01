@@ -8,9 +8,9 @@ function previewHandler() {
     var canvas = document.getElementById("tshirtCanvas");
     var context = canvas.getContext("2d");
     fillBackgroundColor(canvas, context);
-
+    drawLogo(canvas, context);
     drawText(canvas, context);
-    //alert(1);
+    
     var selectObj = document.getElementById("shape");
     var index = selectObj.selectedIndex;
     var shape = selectObj[index].value;
@@ -98,17 +98,26 @@ function drawText(canvas, context) {
     context.fillText(tweet, 30, 100);
     */
     //后缀
+
     context.color = "bold 1em sans-serif";
     context.textAlign = "right";
     context.fillText("ann all i got was this lousy t-shirt!", canvas.width-20, canvas.height-40);
    
 }
 
+function drawLogo (canvas, context) {
+    var twitterBird = new Image();
+    twitterBird.src = "twitterBird.png";
+    twitterBird.onload = function() {
+    context.drawImage(twitterBird, 20, 120 ,66, 66);
+    }
+}
+
 function fillBackgroundColor (canvas, context) {
     var selectObj = document.getElementById("backgroundColor");
     var index = selectObj.selectedIndex;
     var bgColor = selectObj.options[index].value;
-    context.fillStyle = "#ffffff";
+    context.fillStyle = bgColor;
     context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
