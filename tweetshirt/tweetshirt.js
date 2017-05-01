@@ -97,12 +97,41 @@ function drawText(canvas, context) {
     context.font = "italic   1.2em serif";
     context.fillText(tweet, 30, 100);
     */
+	// If you want to try splitIntoLines to 
+	// handle longer tweets, uncomment this code
+	// and replace the context.fillText line above
+/*
+	if (tweet.length > 60) {
+		var tweetLines = splitIntoLines(tweet);
+		for (var i = 0; i < tweetLines.length; i++) {
+			context.fillText(tweetLines[i], 30, 70+(i*25));
+		}
+	}
+	else {
+		context.fillText(tweet, 30, 100);
+	}
+*/
     //后缀
-
     context.color = "bold 1em sans-serif";
     context.textAlign = "right";
     context.fillText("ann all i got was this lousy t-shirt!", canvas.width-20, canvas.height-40);
    
+}
+
+// Splits one long string into multiple lines of 
+// no more than 60 characters each. Returns an
+// array of the lines.
+function splitIntoLines(str) {
+	var strs = new Array();
+	var space = str.indexOf(' ', 60);
+	strs[0] = str.substring(0, space);
+	strs[1] = str.substring(space+1);
+	if (strs[1].length > 60) {
+		space = strs[1].indexOf(' ', 60);
+		strs[2] = strs[1].substring(space+1);
+		strs[1] = strs[1].substring(0, space);
+	}
+	return strs;
 }
 
 function drawLogo (canvas, context) {
