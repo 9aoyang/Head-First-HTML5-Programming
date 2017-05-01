@@ -52,6 +52,7 @@ function drawCircle(canvas, context) {
 }
 
 function drawTriangle (canvas, context) {
+    /* 三角形绘制测试
     context.beginPath();
     context.moveTo(100, 150);
     context.lineTo(250, 75);
@@ -61,6 +62,21 @@ function drawTriangle (canvas, context) {
     context.stroke();
     context.fillStyle = "black";
     context.fill();
+    */
+    /* context.arc角度从起始边到终止边，取顺时针为正
+    var radius = Math.floor(Math.random() * 40);
+    var x = Math.floor(Math.random() * canvas.width);
+    var y = Math.floor(Math.random() * canvas.height);
+    
+    context.beginPath();
+    context.arc(200, 150, 30, 0, degreesToRadians(-90), false);
+     //alert(1);   
+    
+    context.fillStyle = "lightblue";
+    context.stroke();
+    */
+
+    
 }
 
 function fillBackgroundColor (canvas, context) {
