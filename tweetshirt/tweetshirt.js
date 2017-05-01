@@ -9,6 +9,8 @@ function previewHandler() {
     var context = canvas.getContext("2d");
     fillBackgroundColor(canvas, context);
 
+    drawText(canvas, context);
+    //alert(1);
     var selectObj = document.getElementById("shape");
     var index = selectObj.selectedIndex;
     var shape = selectObj[index].value;
@@ -75,8 +77,31 @@ function drawTriangle (canvas, context) {
     context.fillStyle = "lightblue";
     context.stroke();
     */
+}
 
+function drawText(canvas, context) {
     
+	var selectObj = document.getElementById("foregroundColor");
+	var index = selectObj.selectedIndex;
+	var fgColor = selectObj[index].value;
+    context.fillStyle = fgColor;  
+    //前言
+    context.font = "bold 1em sans-serif";
+    context.textAlign = "left";
+    context.fillText("I saw this tweet", 20, 40);
+    //正文
+    /*
+    selectObj = document.getElementById("tweets");
+    index = selectObj.selectedIndex;
+    var tweet = selectObj[index].value;
+    context.font = "italic   1.2em serif";
+    context.fillText(tweet, 30, 100);
+    */
+    //后缀
+    context.color = "bold 1em sans-serif";
+    context.textAlign = "right";
+    context.fillText("ann all i got was this lousy t-shirt!", canvas.width-20, canvas.height-40);
+   
 }
 
 function fillBackgroundColor (canvas, context) {
