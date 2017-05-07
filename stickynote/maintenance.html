@@ -1,0 +1,25 @@
+<!DOCTPYE HTML>
+<html>
+
+<head>
+    <title>Maintenance</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <form>
+        <input type="button" id="clear_button" value="Clear storage">
+    </form>
+    <script>
+        window.onload = function () {
+            var clearButton = document.getElementById("clear_button");
+            clearButton.onclick = clearStorage;
+
+            function clearStorage() {
+                localStorage.clear();
+            }
+        }
+    </script>
+</body>
+
+</html>
