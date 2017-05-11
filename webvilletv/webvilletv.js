@@ -46,7 +46,7 @@ function getFormatExtension() {
 function errorHandler() {
     var video = document.getElementById("video");
     if (video.error) {
-            video.poster = "images/technicaldifficulties.jpg";
-            alert(video.error.code);
+        video.poster = "images/technicaldifficulties.jpg";
+        alert(video.error.code);
     }
 }

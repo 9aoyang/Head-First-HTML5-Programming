@@ -1,5 +1,5 @@
-
 /* main content */
+
 div#tv {
 	margin: auto;
 	width: 650px;
@@ -14,12 +14,15 @@ div#tvConsole {
 	left: 0px;
 }
 
+
 /* video */
+
 div#videoDiv {
 	position: relative;
 	top: 70px;
 	left: 80px;
 }
+
 video {
 	background-color: black;
 	width: 480px;
@@ -34,4 +37,3 @@ div#highlight {
 	left: 20px;
 	z-index: 1;
 }
-
