@@ -15,50 +15,50 @@ function init() {
 }
 
 function createSticky() {
-	var stickiesArray = getStickiesArray();
-	var value = document.getElementById("note_text").value;
-	var colorSelectObj = document.getElementById("note_color");
-	var index = colorSelectObj.selectedIndex;
-	var color = colorSelectObj[index].value;
+    var stickiesArray = getStickiesArray();
+    var value = document.getElementById("note_text").value;
+    var colorSelectObj = document.getElementById("note_color");
+    var index = colorSelectObj.selectedIndex;
+    var color = colorSelectObj[index].value;
 
-	// create sticky note using JSON to hold value and color
-	var currentDate = new Date();
-	var key = "sticky_" + currentDate.getTime();
-	var stickyObj = {
-			"value": value,
-			"color": color
-	};
-	localStorage.setItem(key, JSON.stringify(stickyObj));
+    // create sticky note using JSON to hold value and color
+    var currentDate = new Date();
+    var key = "sticky_" + currentDate.getTime();
+    var stickyObj = {
+        "value": value,
+        "color": color
+    };
+    localStorage.setItem(key, JSON.stringify(stickyObj));
 
-	// add new sticky note key to array and update notes array in localStorage
-	stickiesArray.push(key);
-	localStorage.setItem("stickiesArray", JSON.stringify(stickiesArray));
-	
-	addStickyToDOM(key, stickyObj);
+    // add new sticky note key to array and update notes array in localStorage
+    stickiesArray.push(key);
+    localStorage.setItem("stickiesArray", JSON.stringify(stickiesArray));
+
+    addStickyToDOM(key, stickyObj);
 }
 
 function addStickyToDOM(key, stickyObj) {
-	var stickies = document.getElementById("stickies");
+    var stickies = document.getElementById("stickies");
 
-	var sticky = document.createElement("li");
-	// set the id attribute to the key so we can find it using
-	// the ids stored in the stickies array
-	sticky.setAttribute("id", key);
-	// use the stickyObj color, and set the background-color CSS style
-	sticky.style.backgroundColor = stickyObj.color;
+    var sticky = document.createElement("li");
+    // set the id attribute to the key so we can find it using
+    // the ids stored in the stickies array
+    sticky.setAttribute("id", key);
+    // use the stickyObj color, and set the background-color CSS style
+    sticky.style.backgroundColor = stickyObj.color;
 
-	var span = document.createElement("span");
-	span.setAttribute("class", "sticky");
+    var span = document.createElement("span");
+    span.setAttribute("class", "sticky");
 
-	// use the stickyObj value as the text for the sticky note 
-	span.innerHTML = stickyObj.value;
+    // use the stickyObj value as the text for the sticky note 
+    span.innerHTML = stickyObj.value;
 
-	// add everything to the DOM
-	sticky.appendChild(span);
-	stickies.appendChild(sticky);
+    // add everything to the DOM
+    sticky.appendChild(span);
+    stickies.appendChild(sticky);
 
-	// add an event listener so when you click on a sticky note it can be deleted
-	sticky.onclick = deleteSticky;
+    // add an event listener so when you click on a sticky note it can be deleted
+    sticky.onclick = deleteSticky;
 }
 
 function getStickiesArray() {
