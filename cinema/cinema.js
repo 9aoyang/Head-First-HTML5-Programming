@@ -1,55 +1,54 @@
-
 function Movie(title, genre, star, showtimes) {
 	this.title = title;
 	this.genre = genre;
 	this.star = star;
 	this.showtimes = showtimes;
-	this.getNextShowing = function() {
-	var now = new Date().getTime();
-	for (var i = 0; i < this.showtimes.length; i++) {
-		var showtime = getTimeFromString(this.showtimes[i]);
-		if ((showtime - now) > 0) {
-			return "Next showing of " + this.title + " is " + this.showtimes[i];
+	this.getNextShowing = function () {
+		var now = new Date().getTime();
+		for (var i = 0; i < this.showtimes.length; i++) {
+			var showtime = getTimeFromString(this.showtimes[i]);
+			if ((showtime - now) > 0) {
+				return "Next showing of " + this.title + " is " + this.showtimes[i];
+			}
 		}
-	}
-	return null;
+		return null;
 	};
 }
 
 var movie1 = {
-    title:      "Plan 9 from Out Space",
-    genre:      "dracula",
-    star:       2,
-    showtimes:  ["3:00pm", "7:00pm", "11:00pm"],
-    getNextShowing: function () {
-	var now = new Date().getTime();
-	for (var i = 0; i < this.showtimes.length; i++) {
-		var showtime = getTimeFromString(this.showtimes[i]);
-		if ((showtime - now) > 0) {
-			return "Next showing of " + this.title + " is " + this.showtimes[i];
+	title: "Plan 9 from Out Space",
+	genre: "dracula",
+	star: 2,
+	showtimes: ["3:00pm", "7:00pm", "11:00pm"],
+	getNextShowing: function () {
+		var now = new Date().getTime();
+		for (var i = 0; i < this.showtimes.length; i++) {
+			var showtime = getTimeFromString(this.showtimes[i]);
+			if ((showtime - now) > 0) {
+				return "Next showing of " + this.title + " is " + this.showtimes[i];
+			}
 		}
+		return null;
 	}
-	return null;
-    }
 };
 
 var movie2 = {
-    title:      "Forbidden Planet",
-    genre:      "sci-fi",
-    star:       5,
-    showtimes:  ["3:00pm", "9:00pm", "11:00pm"],
-    getNextShowing: function () {
-	var now = new Date().getTime();
-	for (var i = 0; i < this.showtimes.length; i++) {
-		var showtime = getTimeFromString(this.showtimes[i]);
-		if ((showtime - now) > 0) {
-			return "Next showing of " + this.title + " is " + this.showtimes[i];
+	title: "Forbidden Planet",
+	genre: "sci-fi",
+	star: 5,
+	showtimes: ["3:00pm", "9:00pm", "11:00pm"],
+	getNextShowing: function () {
+		var now = new Date().getTime();
+		for (var i = 0; i < this.showtimes.length; i++) {
+			var showtime = getTimeFromString(this.showtimes[i]);
+			if ((showtime - now) > 0) {
+				return "Next showing of " + this.title + " is " + this.showtimes[i];
+			}
 		}
+		return null;
 	}
-	return null;
-    }
 };
-var movie3 = new Movie("捉妖记", "comedy",  5, ["12.00am", "3:00pm", "7:00pm", "11:00pm"]);
+var movie3 = new Movie("捉妖记", "comedy", 5, ["12.00am", "3:00pm", "7:00pm", "11:00pm"]);
 var movie4 = new Movie("爱乐之城", "musical", 5, ["3:00pm", "9:00pm", "11:00pm"]);
 
 function getNextShowing(movie) {
@@ -66,8 +65,8 @@ function getNextShowing(movie) {
 function getTimeFromString(str) {
 	var theTime = new Date();
 	var time = str.match(/(\d+)(?::(\d\d))?\s*(p?)/);
-	theTime.setHours( parseInt(time[1]) + (time[3] ? 12 : 0) );
-	theTime.setMinutes( parseInt(time[2]) || 0 );
+	theTime.setHours(parseInt(time[1]) + (time[3] ? 12 : 0));
+	theTime.setMinutes(parseInt(time[2]) || 0);
 	return theTime.getTime();
 }
 
