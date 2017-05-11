@@ -42,7 +42,7 @@ function setEffect(e) {
 		effectFunction = western;
 	} else if (id == "noir") {
 		pushUnpushButtons("noir", ["normal", "western", "scifi"]);
-		
+
 		effectFunction = noir;
 		//alert(1);
 	} else if (id == "scifi") {
@@ -171,7 +171,7 @@ function endedHandler() {
 }
 
 function noir(pos, r, g, b, data) {
-	var brightness = (3*r + 4*g + b) >>> 3;
+	var brightness = (3 * r + 4 * g + b) >>> 3;
 	if (brightness < 0) brightness = 0;
 	data[pos * 4 + 0] = brightness;
 	data[pos * 4 + 1] = brightness;
@@ -179,16 +179,16 @@ function noir(pos, r, g, b, data) {
 }
 
 function western(pos, r, g, b, data) {
-	var brightness = (3*r + 4*g + b) >>> 3;
-	data[pos * 4 + 0] = brightness+40;
-	data[pos * 4 + 1] = brightness+20;
-	data[pos * 4 + 2] = brightness-20;
+	var brightness = (3 * r + 4 * g + b) >>> 3;
+	data[pos * 4 + 0] = brightness + 40;
+	data[pos * 4 + 1] = brightness + 20;
+	data[pos * 4 + 2] = brightness - 20;
 	data[pos * 4 + 3] = 255; //220;
 }
 
 function scifi(pos, r, g, b, data) {
 	var offset = pos * 4;
-	data[offset] = Math.round(255 - r) ;
-	data[offset+1] = Math.round(255 - g) ;
-	data[offset+2] = Math.round(255 - b) ;
+	data[offset] = Math.round(255 - r);
+	data[offset + 1] = Math.round(255 - g);
+	data[offset + 2] = Math.round(255 - b);
 }
