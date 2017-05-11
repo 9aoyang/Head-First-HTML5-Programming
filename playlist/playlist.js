@@ -1,14 +1,11 @@
-
-
 function handleButtonClick() {
   //alert("button was clicked");
   var textInput = document.getElementById("songTextInput");
   var songName = textInput.value;
 
-  if(songName == "") {
+  if (songName == "") {
     alert("please enter a song.");
-  }
-  else {
+  } else {
     var li = document.createElement("li");
     li.innerHTML = songName;
     var ul = document.getElementById("playlist");
@@ -19,8 +16,8 @@ function handleButtonClick() {
 window.onload = init;
 
 function init() {
-	var button = document.getElementById("addButton");
-	button.onclick = handleButtonClick;
+  var button = document.getElementById("addButton");
+  button.onclick = handleButtonClick;
 
-	loadPlaylist();
+  loadPlaylist();
 }
