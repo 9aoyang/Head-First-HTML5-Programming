@@ -27,8 +27,8 @@ var palette = [];
 //
 function createTask(row) {
 	var task = {
-		row: row,				// row number we're working on
-		width: rowData.width,   // width of the ImageData object to fill
+		row: row, // row number we're working on
+		width: rowData.width, // width of the ImageData object to fill
 		generation: generation, // how far in we are
 		r_min: r_min,
 		r_max: r_max,
@@ -48,14 +48,14 @@ function createTask(row) {
 //
 //
 function makePalette() {
-    function wrap(x) {
-        x = ((x + 256) & 0x1ff) - 256;
-        if (x < 0) x = -x;
-        return x;
-    }
-    for (i = 0; i <= this.max_iter; i++) {
-        palette.push([wrap(7*i), wrap(5*i), wrap(11*i)]);
-    }
+	function wrap(x) {
+		x = ((x + 256) & 0x1ff) - 256;
+		if (x < 0) x = -x;
+		return x;
+	}
+	for (i = 0; i <= this.max_iter; i++) {
+		palette.push([wrap(7 * i), wrap(5 * i), wrap(11 * i)]);
+	}
 }
 
 
@@ -67,45 +67,45 @@ function makePalette() {
 // 	for one row to a color using the palette.
 //
 function drawRow(workerResults) {
-    var values = workerResults.values;	// The values array the worker sends back
-    var pixelData = rowData.data;		// The actual pixels in the ImageData obj
-										// The pixelData is a *reference* to the
-										// 	rowData.data! so changing pixelData
-										// 	changes the rowData.data!!!
-    for (var i = 0; i < rowData.width; i++) {  // for each pixel in the row
+	var values = workerResults.values; // The values array the worker sends back
+	var pixelData = rowData.data; // The actual pixels in the ImageData obj
+	// The pixelData is a *reference* to the
+	// 	rowData.data! so changing pixelData
+	// 	changes the rowData.data!!!
+	for (var i = 0; i < rowData.width; i++) { // for each pixel in the row
 		var red = i * 4;
 		var green = i * 4 + 1;
 		var blue = i * 4 + 2;
 		var alpha = i * 4 + 3;
 
-        pixelData[alpha] = 255; // set alpha to opaque
+		pixelData[alpha] = 255; // set alpha to opaque
 
 		// if the values array has a neg number, set the color to black
-        if (values[i] < 0) {
-            pixelData[red] = pixelData[green] = pixelData[blue] = 0;
-        } else {
+		if (values[i] < 0) {
+			pixelData[red] = pixelData[green] = pixelData[blue] = 0;
+		} else {
 			//
 			// map the number from the values array returned by the worker
 			// to a color from the palette
 			//
-            var color = this.palette[values[i]];
+			var color = this.palette[values[i]];
 
 			//
 			// each color has an rgb component, so set the rgb of
 			// the pixel we're working on to r,g,b.
 			//
-            pixelData[red] = color[0];
-            pixelData[green] = color[1];
-            pixelData[blue] = color[2];
-        }
-    }
+			pixelData[red] = color[0];
+			pixelData[green] = color[1];
+			pixelData[blue] = color[2];
+		}
+	}
 	//
 	// paint the row back into the canvas
 	// workerData.row is the row number we're working on
 	// rowData contains the data we just updated!
 	// we start at column 0, so x, y = 0, row
 	//
-    ctx.putImageData(this.rowData, 0, workerResults.row);
+	ctx.putImageData(this.rowData, 0, workerResults.row);
 }
 
 
@@ -123,8 +123,8 @@ function setupGraphics() {
 	canvas.height = window.innerHeight;
 	var width = ((i_max - i_min) * canvas.width / canvas.height);
 	var r_mid = (r_max + r_min) / 2;
-	r_min = r_mid - width/2;
-	r_max = r_mid + width/2;
+	r_min = r_mid - width / 2;
+	r_max = r_mid + width / 2;
 
 	rowData = ctx.createImageData(canvas.width, 1);
 

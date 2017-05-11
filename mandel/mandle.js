@@ -10,7 +10,7 @@ function init() {
     canvas.onclick = function (event) {
         handleClick(event.clientX, event.clientY);
     }
-    
+
     // When you resize the browser window, we need
     //	to resize the canvas and restart the workers.
     //
@@ -52,7 +52,7 @@ function startWorkers() {
 }
 
 function processWork(worker, workerResults) {
-    if(workerResults.generation == generation) {
+    if (workerResults.generation == generation) {
         drawRow(workerResults);
     }
     reassignWorker(worker);
@@ -86,13 +86,13 @@ function handleClick(x, y) {
 }
 
 function resizeToWindow() {
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-	var width = ((i_max - i_min) * canvas.width / canvas.height);
-	var r_mid = (r_max + r_min) / 2;
-	r_min = r_mid - width/2;
-	r_max = r_mid + width/2;
-	rowData = ctx.createImageData(canvas.width, 1);
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var width = ((i_max - i_min) * canvas.width / canvas.height);
+    var r_mid = (r_max + r_min) / 2;
+    r_min = r_mid - width / 2;
+    r_max = r_mid + width / 2;
+    rowData = ctx.createImageData(canvas.width, 1);
 
-	startWorkers();
+    startWorkers();
 }
